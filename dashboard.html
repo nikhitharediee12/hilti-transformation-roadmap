@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QBR dashboard | Group 5 Hilti Transformation Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--concrete:#E8E9E5;--paper:#FFFFFF;--graphite:#1D262B;--steel:#56646B;--rule:#C7CCC6;--signal:#C1121C;
+--ok:#2E7A4C;--ok-bg:#E3F0E7;--risk:#9A6A00;--risk-bg:#FBF0D3;--off:#A3231B;--off-bg:#F8E1DE;
+--crawl:#5A6870;--walk:#2F5F7A;--run:#C1121C;
+--sans:"Archivo","Liberation Sans","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--concrete);color:var(--graphite);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--walk)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.site-head{background:var(--graphite);color:#fff;border-top:6px solid var(--signal)}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:700;font-stretch:85%;font-size:18px;letter-spacing:.01em}
+.brand span{font-weight:400;color:#B9C2C6}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px;margin:0;padding:0}
+nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:3px;font-size:15px}
+nav a:hover{background:rgba(255,255,255,.12)}
+nav a[aria-current=page]{background:#fff;color:var(--graphite);font-weight:600}
+h1{font-stretch:80%;font-weight:750;font-size:clamp(30px,4.4vw,48px);line-height:1.05;margin:36px 0 10px;max-width:22ch}
+h2{font-stretch:85%;font-weight:700;font-size:26px;line-height:1.15;margin:44px 0 12px}
+h3{font-stretch:90%;font-weight:700;font-size:18px;margin:22px 0 6px}
+p{max-width:75ch}
+.lede{font-size:18px;color:var(--steel);max-width:68ch;margin:0 0 8px}
+.owner{font-size:14px;color:var(--steel);margin:0 0 24px}
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:20px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-size:14px}
+th,td{border:1px solid var(--rule);padding:9px 10px;text-align:left;vertical-align:top}
+thead th{background:var(--graphite);color:#fff;font-weight:600;font-stretch:90%}
+tbody th{font-weight:600;background:#F4F5F2}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 7px;border-radius:2px;white-space:nowrap}
+.tag.Crawl{background:#E4E8E9;color:var(--crawl)}.tag.Walk{background:#DDE8EF;color:var(--walk)}.tag.Run{background:#F6DEDF;color:var(--run)}
+.ver{color:var(--ok);font-weight:600}.inf{color:var(--risk);font-weight:600}
+.note{font-size:13px;color:var(--steel)}
+.rl+.rl{border-top:1px dashed var(--rule);margin-top:4px;padding-top:4px}
+footer{margin-top:56px;padding:20px 0 40px;border-top:1px solid var(--rule);font-size:13px;color:var(--steel)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{.site-head nav,footer{display:none}body{background:#fff}}
+
+@page{size:letter landscape;margin:.25in}
+.board{max-width:1100px;margin:20px auto;background:#fff;border:1px solid var(--rule);font-size:13px;line-height:1.35}
+.b-head{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:4px solid var(--graphite)}
+.b-head h1{font-size:24px;margin:0;max-width:none;line-height:1.1}
+.b-head .q{font-size:13px;color:var(--steel);margin-top:3px}
+.health{display:flex;gap:12px;align-items:center;background:var(--risk-bg);border:2px solid var(--risk);padding:8px 12px;max-width:520px}
+.health .lamp{flex:none;width:58px;text-align:center;font-weight:800;font-stretch:80%;font-size:19px;color:var(--risk)}
+.health .lamp i{display:block;width:26px;height:26px;border-radius:50%;background:#E0A100;margin:0 auto 2px;border:2px solid var(--risk)}
+.health p{margin:0;font-size:13px}
+.phases{display:grid;grid-template-columns:2fr 3fr 2fr;gap:0}
+.phase{padding:10px 12px 12px;border-right:1px solid var(--rule)}.phase:last-child{border-right:0}
+.p-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--crawl);padding-bottom:4px;margin-bottom:8px}
+.phase.Walk .p-head{border-color:var(--walk)}.phase.Run .p-head{border-color:var(--run)}
+.p-head h2{margin:0;font-size:18px}.p-head .pst{font-size:12px;font-weight:700}
+.pst.green{color:var(--ok)}.pst.amber{color:var(--risk)}
+.p-inits{font-size:11.5px;color:var(--steel);margin:-2px 0 8px}
+.tiles{display:grid;gap:8px}.phase.Walk .tiles{grid-template-columns:1fr 1fr 1fr}.phase.Crawl .tiles,.phase.Run .tiles{grid-template-columns:1fr 1fr}
+.tile{border:1px solid var(--rule);border-left:5px solid var(--ok);padding:7px 8px;display:flex;flex-direction:column;gap:4px}
+.tile.risk{border-left-color:#E0A100}.tile.off{border-left-color:var(--off)}
+.t-top{display:flex;gap:5px;align-items:center}.t-tags{display:flex;gap:4px;flex-wrap:wrap}
+.mid{font-weight:800;font-size:12px}.kind{font-size:10.5px;border:1px solid var(--rule);padding:0 4px;border-radius:2px;color:var(--steel)}
+.kind.org{border-color:var(--walk);color:var(--walk);font-weight:600}
+.st{margin-left:auto;font-size:11px;font-weight:700;padding:1px 6px;border-radius:2px}
+.st.ok{background:var(--ok-bg);color:var(--ok)}.st.risk{background:var(--risk-bg);color:var(--risk)}.st.off{background:var(--off-bg);color:var(--off)}
+.tile h4{margin:0;font-size:12.5px;line-height:1.25;font-weight:650}
+.t-init{font-size:11px;color:var(--steel)}
+.bullet{position:relative;height:14px;background:#EEF0EC;margin-top:2px}
+.bullet .fill{position:absolute;left:0;top:3px;bottom:3px;background:var(--ok)}.bullet .fill.risk{background:#C98A00}.bullet .fill.off{background:var(--off)}
+.bullet .tick{position:absolute;top:-2px;bottom:-2px;width:3px;background:var(--graphite)}
+.dots,.count{display:flex;gap:4px;align-items:center;height:14px;margin-top:2px}
+.d{width:12px;height:12px;border-radius:50%;background:var(--ok)}.d.risk{background:#C98A00}.d.off{background:var(--off)}.d.empty{background:#fff;border:2px solid var(--graphite)}
+.lim{font-size:11px;color:var(--steel);margin-left:4px}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:6px}.vals small{display:block;font-size:10.5px;color:var(--steel)}.vals b{font-size:15px;line-height:1.1}
+.t-note{font-size:10.5px;color:var(--steel)}
+.b-foot{display:grid;grid-template-columns:3fr 2fr;border-top:4px solid var(--graphite)}
+.decisions{padding:10px 14px;background:#F4F5F2}
+.decisions h2{font-size:17px;margin:0 0 6px}
+.decisions ol{margin:0;padding-left:20px}.decisions li{margin:0 0 5px}
+.decisions .who{font-size:11.5px;color:var(--steel)}
+.legend2{padding:10px 14px;font-size:11.5px;color:var(--steel);border-left:1px solid var(--rule)}
+.legend2 p{margin:0 0 4px}
+.annot{max-width:1100px;margin:30px auto}
+@media (max-width:820px){.phases,.b-foot,.b-head{grid-template-columns:1fr}.phase{border-right:0;border-bottom:1px solid var(--rule)}.phase.Walk .tiles,.phase.Crawl .tiles,.phase.Run .tiles{grid-template-columns:1fr}}
+@media print{body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}.site-head,.annot,footer,.screen-only{display:none}.board{margin:0;border:0;max-width:none;zoom:.95}main{padding:0}}</style></head><body><header class="site-head"><div class="wrap"><div class="brand">Hilti Transformation Roadmap <span>Group 5, ISM 6930-005</span></div>
+<nav aria-label="Site"><ul><li><a href="index.html">About us</a></li><li><a href="roadmap.html">Roadmap</a></li><li><a href="raci.html">RACI</a></li><li><a href="dashboard.html" aria-current=page>QBR dashboard</a></li></ul></nav></div></header><main>
+<p class="wrap owner screen-only" style="margin-top:16px">Owner: Swapna Tumma (Dashboard Designer). Print this page in landscape: the board fits one page.</p>
+<div class=board>
+<div class=b-head><div><h1>Hilti Connected Jobsite &amp; Software Transformation</h1><div class=q>Quarterly business review, Q4 2022. Simulated by Group 5: values are illustrative except M1; Hilti does not publish these metrics.</div></div>
+<div class=health role=status><div class=lamp><i></i>Amber</div><p><strong>Overall health.</strong> Foundations are healthy and the Unite pilot is cutting manual entry, but European Fieldwire revenue and sales-force software selling trail plan, so Run should proceed only once the decisions below are made.</p></div></div>
+<div class=phases><section class='phase Crawl' aria-label='Crawl phase'><div class=p-head><h2>Crawl</h2><span class='pst green'>Complete</span></div><div class=p-inits>S/4HANA Global Digital Core / ON!Track Asset Management Platform / Fieldwire Acquisition</div><div class=tiles><article class="tile ok"><div class=t-top><span class=mid>M1</span><span class="st ok">&#10003; On track</span></div>
+<div class=t-tags><span class="kind">Leading</span></div>
+<h4>SAP standard-code modifications in the global core</h4><div class=t-init>S/4HANA Global Digital Core</div><div class="count" role="img" aria-label="1 modification, limit 1"><span class="d ok"></span></div>
+<div class=vals><div><small>Current</small><b>1</b></div><div><small>Target</small><b>1 or fewer</b></div></div>
+<div class=t-note>Current value stated by Hilti&#x27;s CIO (S4).</div></article><article class="tile ok"><div class=t-top><span class=mid>M2</span><span class="st ok">&#10003; On track</span></div>
+<div class=t-tags><span class="kind">Leading</span></div>
+<h4>ON!Track accounts with asset data synced in the last 30 days</h4><div class=t-init>ON!Track Asset Management Platform</div><div class="bullet" role="img" aria-label="Current 88% against target 85%"><span class="fill ok" style="width:80.0%"></span><span class="tick" style="left:77.3%"></span></div>
+<div class=vals><div><small>Current</small><b>88%</b></div><div><small>Target</small><b>85%</b></div></div>
+<div class=t-note>Illustrative value.</div></article></div></section><section class='phase Walk' aria-label='Walk phase'><div class=p-head><h2>Walk</h2><span class='pst amber'>In progress</span></div><div class=p-inits>ON!Track Unite Pilot (US &amp; Canada) / Fieldwire Europe Launch</div><div class=tiles><article class="tile risk"><div class=t-top><span class=mid>M3</span><span class="st risk">&#9650; At risk</span></div>
+<div class=t-tags><span class="kind">Leading</span></div>
+<h4>Unite pilot customers with one live integration at 90 days</h4><div class=t-init>ON!Track Unite Pilot (US &amp; Canada)</div><div class="bullet" role="img" aria-label="Current 31% against target 40%"><span class="fill risk" style="width:62.0%"></span><span class="tick" style="left:80.0%"></span></div>
+<div class=vals><div><small>Current</small><b>31%</b></div><div><small>Target</small><b>40%</b></div></div>
+<div class=t-note>Illustrative value.</div></article><article class="tile ok"><div class=t-top><span class=mid>M4</span><span class="st ok">&#10003; On track</span></div>
+<div class=t-tags><span class="kind">Lagging</span></div>
+<h4>Fewer duplicate manual asset entries vs. pre-Unite</h4><div class=t-init>ON!Track Unite Pilot (US &amp; Canada)</div><div class="bullet" role="img" aria-label="Current 29% against target 30%"><span class="fill ok" style="width:77.3%"></span><span class="tick" style="left:80.0%"></span></div>
+<div class=vals><div><small>Current</small><b>29%</b></div><div><small>Target</small><b>30%</b></div></div>
+<div class=t-note>Illustrative value.</div></article><article class="tile risk"><div class=t-top><span class=mid>M5</span><span class="st risk">&#9650; At risk</span></div>
+<div class=t-tags><span class="kind">Lagging</span></div>
+<h4>European Fieldwire subscription revenue vs. plan</h4><div class=t-init>Fieldwire Europe Launch</div><div class="bullet" role="img" aria-label="Current 78% against target 100%"><span class="fill risk" style="width:62.4%"></span><span class="tick" style="left:80.0%"></span></div>
+<div class=vals><div><small>Current</small><b>78%</b></div><div><small>Target</small><b>100%</b></div></div>
+<div class=t-note>Illustrative value.</div></article></div></section><section class='phase Run' aria-label='Run phase'><div class=p-head><h2>Run</h2><span class='pst amber'>Gate review this quarter</span></div><div class=p-inits>ON!Track Unite Global Rollout / Integrated Construction Software Portfolio</div><div class=tiles><article class="tile off"><div class=t-top><span class=mid>M6</span><span class="st off">&#10005; Off track</span></div>
+<div class=t-tags><span class="kind">Leading</span> <span class="kind org">Org change</span></div>
+<h4>Account managers in Fieldwire launch markets who sold at least one software subscription this quarter</h4><div class=t-init>Integrated Construction Software Portfolio</div><div class="bullet" role="img" aria-label="Current 22% against target 40%"><span class="fill off" style="width:44.0%"></span><span class="tick" style="left:80.0%"></span></div>
+<div class=vals><div><small>Current</small><b>22%</b></div><div><small>Target</small><b>40%</b></div></div>
+<div class=t-note>Organizational change metric. Illustrative value.</div></article><article class="tile risk"><div class=t-top><span class=mid>M7</span><span class="st risk">&#9650; At risk</span></div>
+<div class=t-tags><span class="kind">Leading</span></div>
+<h4>2023 rollout-wave markets passing the Unite go-live gate</h4><div class=t-init>ON!Track Unite Global Rollout</div><div class="dots" role="img" aria-label="5 of 6 markets ready"><span class="d risk"></span><span class="d risk"></span><span class="d risk"></span><span class="d risk"></span><span class="d risk"></span><span class="d empty"></span></div>
+<div class=vals><div><small>Current</small><b>5 of 6</b></div><div><small>Target</small><b>6 of 6</b></div></div>
+<div class=t-note>Gate: integration-services team staffed and local terms published. Illustrative value.</div></article></div></section></div>
+<div class=b-foot><div class=decisions><h2>Decisions required this quarter</h2><ol><li><strong>D1, Budget allocation.</strong> Release 2023 funding for the ON!Track Unite Global Rollout now, or hold until pilot integration adoption (M3) reaches 40%? <span class=who>Accountable: Chief Executive Officer.</span></li><li><strong>D6, Case-specific: software selling in direct sales.</strong> Set the 2023 credit rule for software subscriptions before account-manager sales plans are issued (M6 is off track). <span class=who>Accountable: Chief Executive Officer.</span></li><li><strong>D2, Architecture standards.</strong> Define the integration standard an acquired software product must meet before connecting to the S/4HANA core. <span class=who>Accountable: Group CIO.</span></li></ol><div class=who>Each decision comes from the RACI; numbers match raci.html.</div></div>
+<div class=legend2><p><strong>Status.</strong> &#10003; On track: at or above 95% of target. &#9650; At risk: 75 to 94%. &#10005; Off track: below 75%.</p>
+<p><strong>Bars.</strong> Filled bar = current value; dark tick = target. Dots = markets passing the gate.</p>
+<p><strong>Mix.</strong> 5 leading and 2 lagging metrics; M6 tracks organizational change.</p></div></div>
+</div>
+
+<section class="wrap annot"><h2>Design decisions</h2>
+<p><strong>The health signal sits top right, in amber, with one sentence.</strong> A leadership team reads the verdict first and the reason second; the sentence names the two metrics behind the amber so nobody has to hunt for them.</p>
+<p><strong>Phases run left to right in roadmap order.</strong> The board mirrors the roadmap page, so a reader can trace any metric back to its initiative by position as well as by name. The Walk column is widest because Walk is where this quarter's evidence is.</p>
+<p><strong>Bullet bars instead of gauges or trend lines.</strong> Each metric answers one question, how far from target, and a bar with a target tick shows that in the least space. Gauges waste area; trend lines need history Hilti has not published.</p>
+<p><strong>Status uses shape as well as colour.</strong> A tick, a triangle and a cross carry the same meaning as green, amber and red, so the board still reads in greyscale print or for colour-blind readers.</p>
+<p><strong>Decisions sit at the bottom, numbered as in the RACI.</strong> The review ends on what leaders must decide before the next QBR, and each item names its single Accountable role.</p>
+<p><strong>The "Illustrative" label is on every tile that needs it.</strong> Only M1 is a published figure (<a href="roadmap.html#S4">S4</a>). Labelling the rest keeps the dashboard honest about what Hilti discloses.</p>
+</section></main><footer><div class="wrap">Page owner: Swapna Tumma (Dashboard Designer). Week 6 group activity, ISM 6930-005. Hilti is not affiliated with this coursework; all analysis is the team's own and every company fact links to a source on the <a href="roadmap.html#sources">roadmap page</a>.</div></footer></body></html>
