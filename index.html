@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About us | Group 5 Hilti Transformation Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--concrete:#E8E9E5;--paper:#FFFFFF;--graphite:#1D262B;--steel:#56646B;--rule:#C7CCC6;--signal:#C1121C;
+--ok:#2E7A4C;--ok-bg:#E3F0E7;--risk:#9A6A00;--risk-bg:#FBF0D3;--off:#A3231B;--off-bg:#F8E1DE;
+--crawl:#5A6870;--walk:#2F5F7A;--run:#C1121C;
+--sans:"Archivo","Liberation Sans","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--concrete);color:var(--graphite);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--walk)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.site-head{background:var(--graphite);color:#fff;border-top:6px solid var(--signal)}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:700;font-stretch:85%;font-size:18px;letter-spacing:.01em}
+.brand span{font-weight:400;color:#B9C2C6}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px;margin:0;padding:0}
+nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:3px;font-size:15px}
+nav a:hover{background:rgba(255,255,255,.12)}
+nav a[aria-current=page]{background:#fff;color:var(--graphite);font-weight:600}
+h1{font-stretch:80%;font-weight:750;font-size:clamp(30px,4.4vw,48px);line-height:1.05;margin:36px 0 10px;max-width:22ch}
+h2{font-stretch:85%;font-weight:700;font-size:26px;line-height:1.15;margin:44px 0 12px}
+h3{font-stretch:90%;font-weight:700;font-size:18px;margin:22px 0 6px}
+p{max-width:75ch}
+.lede{font-size:18px;color:var(--steel);max-width:68ch;margin:0 0 8px}
+.owner{font-size:14px;color:var(--steel);margin:0 0 24px}
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:20px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-size:14px}
+th,td{border:1px solid var(--rule);padding:9px 10px;text-align:left;vertical-align:top}
+thead th{background:var(--graphite);color:#fff;font-weight:600;font-stretch:90%}
+tbody th{font-weight:600;background:#F4F5F2}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 7px;border-radius:2px;white-space:nowrap}
+.tag.Crawl{background:#E4E8E9;color:var(--crawl)}.tag.Walk{background:#DDE8EF;color:var(--walk)}.tag.Run{background:#F6DEDF;color:var(--run)}
+.ver{color:var(--ok);font-weight:600}.inf{color:var(--risk);font-weight:600}
+.note{font-size:13px;color:var(--steel)}
+.rl+.rl{border-top:1px dashed var(--rule);margin-top:4px;padding-top:4px}
+footer{margin-top:56px;padding:20px 0 40px;border-top:1px solid var(--rule);font-size:13px;color:var(--steel)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{.site-head nav,footer{display:none}body{background:#fff}}
+.hero{padding:10px 0 6px}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.member{background:#fff;border:1px solid var(--rule);padding:16px}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--graphite);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;font-stretch:85%;margin-bottom:10px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.member h3{margin:0}.member .r{color:var(--signal);font-weight:600;font-size:14px;margin:2px 0 8px}
+.member p{font-size:14px;margin:0}
+.ph{color:var(--steel);font-style:italic}
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;padding:0;list-style:none}
+.benefits li{background:#fff;border:1px solid var(--rule);border-top:4px solid var(--graphite);padding:14px 16px;font-size:15px}
+.benefits a{font-weight:700;display:inline-block;margin-bottom:4px}
+.novelty{background:#fff;border-left:6px solid var(--signal);padding:18px 22px;font-size:17px;line-height:1.6;max-width:78ch}
+.pages{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.pages a{display:block;background:var(--graphite);color:#fff;text-decoration:none;padding:12px 18px;font-weight:600}</style></head><body><header class="site-head"><div class="wrap"><div class="brand">Hilti Transformation Roadmap <span>Group 5, ISM 6930-005</span></div>
+<nav aria-label="Site"><ul><li><a href="index.html" aria-current=page>About us</a></li><li><a href="roadmap.html">Roadmap</a></li><li><a href="raci.html">RACI</a></li><li><a href="dashboard.html">QBR dashboard</a></li></ul></nav></div></header><main class=wrap>
+<section class=hero><h1>How a tool company learned to sell software</h1>
+<p class=lede>A Crawl, Walk, Run roadmap, a governance RACI and a quarterly review dashboard for Hilti's move into construction software, built from Hilti's own reports and published cases.</p>
+<div class=pages><a href="roadmap.html">Roadmap</a><a href="raci.html">RACI</a><a href="dashboard.html">QBR dashboard</a></div></section>
+
+<h2>How the three deliverables connect</h2><p>The <a href="roadmap.html">roadmap</a> defines what is built and in what order. The <a href="raci.html">RACI</a> assigns one owner to each recurring decision the roadmap creates; each row names the initiatives it arises from. The <a href="dashboard.html">QBR dashboard</a> tracks one metric set per phase and lists this quarter's decisions from the RACI.</p>
+<h2>The team</h2><div class=team><div class=member><div class=avatar aria-hidden=true>CR</div>
+<!-- To add a photo: put the file in images/ and replace the initials above with <img src="images/member-a.jpg" alt="Photo of Chandrahas Reddy Bheemireddy"> -->
+<h3>Chandrahas Reddy Bheemireddy</h3><div class=r>Roadmap Sequencer</div>
+<p>Chandrahas served as Feature Specifier on our Week 4 Hilti project, scoping an AI feature for firestop engineers down to a narrow, testable MVP. That habit of asking what must exist first shaped this project: Chandrahas owned the roadmap, sequencing seven Hilti initiatives by dependency, separating hard from enabling dependencies, and building the phased execution horizon. <a href="roadmap.html">roadmap.html</a></p></div><div class=member><div class=avatar aria-hidden=true>SN</div>
+<!-- To add a photo: put the file in images/ and replace the initials above with <img src="images/member-b.jpg" alt="Photo of Sai Nikhitha Kasala"> -->
+<h3>Sai Nikhitha Kasala</h3><div class=r>Governance Designer</div>
+<p>Sai Nikhitha was the Build Buy Partner Analyst in Week 4, scoring options on time to value, cost, data control and switching cost before recommending a partner-led pilot. Here Sai Nikhitha owned the RACI, assigning one Accountable role to each of seven recurring decisions and proposing how each decision-right would be enforced. <a href="raci.html">raci.html</a></p></div><div class=member><div class=avatar aria-hidden=true>ST</div>
+<!-- To add a photo: put the file in images/ and replace the initials above with <img src="images/member-c.jpg" alt="Photo of Swapna Tumma"> -->
+<h3>Swapna Tumma</h3><div class=r>Dashboard Designer</div>
+<p>Swapna co-built the working single-file prototype in Week 4, turning a written specification into an interface people could actually use. Here Swapna designed the QBR dashboard: eight metrics across Crawl, Walk and Run, the Amber health signal, and the bullet-bar layout that lets leaders read progress against target at a glance. <a href="dashboard.html">dashboard.html</a></p></div><div class=member><div class=avatar aria-hidden=true>VT</div>
+<!-- To add a photo: put the file in images/ and replace the initials above with <img src="images/member-d.jpg" alt="Photo of Venkatanagasai Tanish Puttagunta"> -->
+<h3>Venkatanagasai Tanish Puttagunta</h3><div class=r>Site Editor</div>
+<p>Tanish co-built the Week 4 prototype and brought that hands-on build experience to running the team&#x27;s site. As Site Editor, Tanish set up the repository, naming contract and branch protection, kept the source log for every initiative, ran the consistency check across all three deliverables, and assembled this About Us page. <a href="index.html">index.html</a></p></div></div>
+
+<h2>Who this is for</h2><p>The newly appointed Head of Digital Business at a mid-sized European construction-products manufacturer. The company sells through its own field sales force, runs one SAP ERP across its countries, and its executive board has asked for a multi-year plan to launch software subscriptions alongside its hardware.</p>
+
+<h2>What they can do with it</h2><ul class=benefits><li><a href='roadmap.html'>Roadmap</a><br>Use the execution horizon to see which foundation must be live before each Walk initiative, and which of those dependencies are hard prerequisites versus standardization choices.</li><li><a href='raci.html'>RACI</a><br>Decide before signing an acquisition who rules on whether the acquired product joins your ERP standard (D2) and how far it is integrated (D7).</li><li><a href='dashboard.html'>Dashboard</a><br>Watch sales-force adoption (M6) as the early warning that a software launch is stalling, instead of counting app downloads.</li><li><a href='roadmap.html#sources'>Sources</a><br>Check every claim against a named Hilti source, and see the list of what Hilti does not publish, before you reuse a number.</li></ul>
+
+<h2>What we added</h2><p class=novelty>In Week 4 our team designed an AI feature for Hilti&#x27;s firestop engineers, and that work kept returning to one lesson: nothing useful runs on data nobody governs. That is why the roadmap places the S/4HANA Global Digital Core in Crawl, even though it went live years before Hilti&#x27;s software push: it gives later software a standard way to be billed and integrated. We were careful not to overstate that link, so the dependency table marks it as enabling rather than hard. Because Hilti built its foundations as separate waves between 2015 and 2021, the roadmap shows two timelines: the verified history, and an execution horizon in which Crawl fits in four quarters and Run continues from quarter 8 onward. In the RACI we gave architecture exceptions to the Group CIO because Hilti&#x27;s CIO reports only one modification to SAP standard code, and 4PS, built on Microsoft Dynamics 365, will test that rule. On the dashboard, the first metric we would watch is the share of account managers selling software, because Hilti&#x27;s direct sales force is its strategy.</p>
+<p class=note>178 words. Each claim points to a page: the Crawl placement and the duration gap (roadmap), the CIO rule and 4PS stack (RACI D2, sources S4 and S13), and M6 and the illustrative labels (dashboard).</p>
+</main><footer><div class="wrap">Page owner: Venkatanagasai Tanish Puttagunta (Site Editor). Week 6 group activity, ISM 6930-005. Hilti is not affiliated with this coursework; all analysis is the team's own and every company fact links to a source on the <a href="roadmap.html#sources">roadmap page</a>.</div></footer></body></html>
